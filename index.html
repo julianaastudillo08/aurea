@@ -3,363 +3,465 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Joyas Juliana</title>
-  <meta name="description" content="Catálogo de joyas. Pedidos por WhatsApp." />
-  <meta property="og:title" content="Joyas Juliana" />
+  <title>Juliana — Joyas</title>
+  <meta name="description" content="Catálogo de joyas Juliana. Pedidos por WhatsApp." />
+  <meta property="og:title" content="Juliana — Joyas" />
   <meta property="og:description" content="Piezas seleccionadas. Pedidos por WhatsApp." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --void: #0a0610;
-      --plum: #1a0f22;
-      --orchid: #c47cff;
-      --orchid-soft: #e2b7ff;
-      --rose: #ff8fb8;
-      --cream: #fff7fb;
-      --ink: #1a1020;
-      --muted: #7a6a82;
-      --wa: #25d366;
-      --card: rgba(255, 255, 255, 0.92);
+      --ink: #1b1511;
+      --soft: #6f645a;
+      --line: #e6ddd2;
+      --pearl: #f6f1ea;
+      --paper: #fffdf9;
+      --champagne: #c2a36b;
+      --champagne-deep: #9a7a3f;
+      --espresso: #120e0b;
+      --wa: #128c7e;
+      --wa-bright: #25d366;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: "Syne", system-ui, sans-serif;
+      font-family: "DM Sans", system-ui, sans-serif;
       color: var(--ink);
+      background: var(--pearl);
       min-height: 100vh;
-      background:
-        radial-gradient(900px 520px at 100% -5%, rgba(196, 124, 255, 0.35), transparent 55%),
-        radial-gradient(700px 480px at -5% 15%, rgba(255, 143, 184, 0.28), transparent 50%),
-        radial-gradient(600px 400px at 50% 110%, rgba(196, 124, 255, 0.18), transparent 55%),
-        linear-gradient(160deg, #09050f 0%, #160c1f 42%, #22102c 100%);
-      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; border: 0; background: none; cursor: pointer; }
+    img { display: block; max-width: 100%; }
 
-    .orb {
+    /* Atmospheric field */
+    .atmosphere {
       position: fixed;
-      border-radius: 50%;
-      filter: blur(60px);
-      pointer-events: none;
+      inset: 0;
       z-index: 0;
-      animation: float 12s ease-in-out infinite;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(194, 163, 107, 0.22), transparent 60%),
+        radial-gradient(ellipse 60% 40% at 100% 30%, rgba(255, 255, 255, 0.7), transparent 50%),
+        radial-gradient(ellipse 50% 35% at 0% 80%, rgba(194, 163, 107, 0.12), transparent 55%),
+        linear-gradient(180deg, #faf6f0 0%, #f3ebe1 48%, #efe6db 100%);
     }
-    .orb.a { width: 280px; height: 280px; background: rgba(196,124,255,.35); top: 8%; left: -80px; }
-    .orb.b { width: 340px; height: 340px; background: rgba(255,143,184,.28); top: 45%; right: -120px; animation-delay: -4s; }
-    .orb.c { width: 220px; height: 220px; background: rgba(226,183,255,.22); bottom: 5%; left: 30%; animation-delay: -7s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-28px); }
+    .atmosphere::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c2a36b' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
 
-    .wrap { position: relative; z-index: 1; }
+    .page { position: relative; z-index: 1; }
 
+    /* Nav */
     .nav {
-      position: sticky; top: 0; z-index: 40;
-      backdrop-filter: blur(18px);
-      background: rgba(10, 6, 16, 0.55);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px) saturate(1.2);
+      background: rgba(246, 241, 234, 0.78);
+      border-bottom: 1px solid rgba(27, 21, 17, 0.06);
     }
     .nav-inner {
-      max-width: 1160px; margin: 0 auto;
-      padding: 0.95rem 1.15rem;
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
-    .brand {
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-    }
-    .brand span {
-      display: block;
-      margin-top: 0.15rem;
-      font-family: "Instrument Serif", Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 0.95rem;
-      color: var(--orchid-soft);
-      letter-spacing: 0;
-    }
-    .wa-chip {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: linear-gradient(135deg, #2dff7a, #19c75a);
-      color: #053018;
-      font-weight: 800;
-      font-size: 0.84rem;
-      padding: 0.65rem 1rem;
-      border-radius: 999px;
-      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.35);
-      transition: transform .2s ease, filter .2s ease;
-    }
-    .wa-chip:hover { transform: translateY(-2px); filter: brightness(1.05); }
-
-    .hero {
-      max-width: 1160px; margin: 0 auto;
-      padding: 2.6rem 1.15rem 1.8rem;
-      color: #fff;
-      display: grid; gap: 1.1rem;
-    }
-    .tag {
-      width: fit-content;
-      padding: 0.4rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.05);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+    .mark {
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--orchid-soft);
+      line-height: 1;
     }
-    .hero h1 {
-      font-size: clamp(2.8rem, 9vw, 5.4rem);
-      line-height: 0.92;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      max-width: 10ch;
-    }
-    .hero h1 i {
-      font-family: "Instrument Serif", Georgia, serif;
+    .mark em {
+      display: block;
+      margin-top: 0.28rem;
       font-style: italic;
-      font-weight: 400;
-      background: linear-gradient(120deg, #ff8fb8, #e2b7ff 55%, #fff);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      font-weight: 500;
+      color: var(--champagne-deep);
+      text-transform: uppercase;
+    }
+    .nav-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.7rem 1.05rem;
+      border-radius: 999px;
+      background: var(--espresso);
+      color: #f7f1e8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .nav-wa:hover { transform: translateY(-1px); background: #2a211b; }
+    .nav-wa svg { color: var(--wa-bright); }
+
+    /* Hero — one composition */
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: clamp(2.4rem, 7vw, 4.5rem) 1.25rem 2.2rem;
+      text-align: center;
+      animation: fadeRise 0.9s ease both;
+    }
+    .hero-brand {
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: clamp(3.4rem, 12vw, 7rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #2a211b 0%, #1b1511 45%, #8a6d3d 140%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    .hero p {
-      max-width: 32rem;
-      color: rgba(255,255,255,0.72);
-      font-size: 1.05rem;
-      line-height: 1.6;
+    .hero-rule {
+      width: 56px;
+      height: 1px;
+      margin: 1.35rem auto 1.15rem;
+      background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+      animation: shimmerLine 2.8s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-family: "Bodoni Moda", Georgia, serif;
       font-weight: 500;
+      font-style: italic;
+      font-size: clamp(1.35rem, 3.4vw, 1.85rem);
+      color: var(--soft);
+      letter-spacing: 0.01em;
+      margin-bottom: 0.85rem;
     }
-    .stats {
-      display: flex; flex-wrap: wrap; gap: 0.6rem;
+    .hero p {
+      max-width: 28rem;
+      margin: 0 auto 1.6rem;
+      color: var(--soft);
+      font-size: 1rem;
+      line-height: 1.65;
+      font-weight: 400;
     }
-    .stat {
-      padding: 0.55rem 0.9rem;
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.45rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.84rem;
+      background: linear-gradient(135deg, #1b1511, #3a2f26);
+      color: #f8f2ea;
+      font-size: 0.88rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.88);
+      letter-spacing: 0.03em;
+      box-shadow: 0 14px 34px rgba(27, 21, 17, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(27, 21, 17, 0.24);
+    }
+    .hero-cta span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--wa-bright);
+      box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.2);
+      animation: pulse 2s ease infinite;
     }
 
-    .stage {
-      max-width: 1160px; margin: 0 auto;
-      padding: 0 0.7rem 0;
+    /* Catalog shell */
+    .catalog {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1rem 5.5rem;
     }
-    .panel {
-      background: linear-gradient(180deg, rgba(255,247,251,0.98), #fff);
-      border-radius: 32px 32px 0 0;
-      padding: 1.2rem 0.9rem 2rem;
-      box-shadow: 0 -10px 60px rgba(0,0,0,0.35);
-      min-height: 70vh;
+    .toolbar {
+      background: rgba(255, 253, 249, 0.82);
+      border: 1px solid rgba(27, 21, 17, 0.06);
+      border-radius: 22px;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(27, 21, 17, 0.04);
+      animation: fadeRise 0.9s ease 0.12s both;
     }
-    @media (min-width: 720px) {
-      .panel { padding: 1.5rem 1.3rem 2.4rem; border-radius: 40px 40px 0 0; }
-      .stage { padding: 0 1.15rem; }
-    }
-
-    .toolbar { display: grid; gap: 0.85rem; margin-bottom: 1.2rem; }
     .search {
       width: 100%;
-      border: 1px solid rgba(26,16,32,0.08);
-      background: #fff;
-      border-radius: 18px;
-      padding: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 0.95rem 1.05rem;
       outline: none;
-      font-size: 0.98rem;
-      font-weight: 500;
-      box-shadow: 0 10px 30px rgba(26,16,32,0.05);
+      font-size: 0.95rem;
+      color: var(--ink);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
+    .search::placeholder { color: #a09488; }
     .search:focus {
-      border-color: rgba(196,124,255,0.55);
-      box-shadow: 0 0 0 4px rgba(196,124,255,0.15);
+      border-color: rgba(194, 163, 107, 0.7);
+      box-shadow: 0 0 0 4px rgba(194, 163, 107, 0.14);
     }
-    .filters { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+    }
     .filter-btn {
-      border: 1px solid rgba(26,16,32,0.08);
-      color: var(--muted);
+      padding: 0.48rem 0.85rem;
       border-radius: 999px;
-      padding: 0.5rem 0.9rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      transition: .15s ease;
+      border: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: 0.18s ease;
     }
-    .filter-btn.active, .filter-btn:hover {
-      background: linear-gradient(135deg, #1a1020, #3a1f4d);
-      color: #fff;
-      border-color: transparent;
+    .filter-btn:hover {
+      border-color: var(--champagne);
+      color: var(--ink);
     }
-    .meta { color: var(--muted); font-size: 0.84rem; font-weight: 600; }
+    .filter-btn.active {
+      background: var(--espresso);
+      border-color: var(--espresso);
+      color: #f6f0e8;
+    }
+    .meta {
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
+      gap: 0.85rem;
     }
-    @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.05rem; } }
-    @media (min-width: 1040px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (min-width: 700px) {
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.15rem; }
+      .toolbar { padding: 1.15rem 1.2rem; }
+    }
+    @media (min-width: 1000px) {
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
 
     .card {
-      position: relative;
-      background: var(--card);
-      border: 1px solid rgba(26,16,32,0.05);
-      border-radius: 24px;
+      background: var(--paper);
+      border: 1px solid rgba(27, 21, 17, 0.05);
+      border-radius: 20px;
       overflow: hidden;
-      display: flex; flex-direction: column;
-      box-shadow: 0 12px 32px rgba(26,16,32,0.07);
-      transition: transform .25s ease, box-shadow .25s ease;
-      animation: up .55s ease both;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 28px rgba(27, 21, 17, 0.04);
+      transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s ease;
+      animation: fadeRise 0.7s ease both;
     }
     .card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 22px 50px rgba(100, 40, 140, 0.16);
+      transform: translateY(-6px);
+      box-shadow: 0 22px 48px rgba(27, 21, 17, 0.1);
     }
-    @keyframes up {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: none; }
-    }
-
-    .img-wrap {
+    .media {
       position: relative;
       aspect-ratio: 1;
       background:
-        radial-gradient(circle at 20% 15%, rgba(255,143,184,0.28), transparent 42%),
-        radial-gradient(circle at 80% 80%, rgba(196,124,255,0.22), transparent 45%),
-        linear-gradient(160deg, #fff0f7, #f3e8ff);
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.9), transparent 45%),
+        linear-gradient(165deg, #f4ebe0, #e8ddd0);
       overflow: hidden;
     }
-    .img-wrap::after {
-      content: "";
-      position: absolute; inset: auto 0 0 0; height: 35%;
-      background: linear-gradient(to top, rgba(255,255,255,0.55), transparent);
-      pointer-events: none;
+    .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
     }
-    .img-wrap img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform .5s ease;
-    }
-    .card:hover img { transform: scale(1.07); }
+    .card:hover .media img { transform: scale(1.06); }
     .badge {
-      position: absolute; top: 0.7rem; left: 0.7rem; z-index: 2;
-      background: linear-gradient(135deg, #c47cff, #ff8fb8);
-      color: #fff;
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 2;
+      padding: 0.3rem 0.55rem;
       border-radius: 999px;
-      padding: 0.32rem 0.6rem;
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      background: rgba(255, 253, 249, 0.92);
+      border: 1px solid rgba(194, 163, 107, 0.45);
+      color: var(--champagne-deep);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      box-shadow: 0 8px 18px rgba(196,124,255,0.35);
     }
-
     .info {
-      padding: 0.85rem 0.9rem 1rem;
-      display: flex; flex-direction: column; gap: 0.25rem; flex: 1;
+      padding: 0.95rem 0.95rem 1.05rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      flex: 1;
+      border-top: 1px solid rgba(27, 21, 17, 0.04);
     }
     .code {
-      font-size: 0.68rem; color: var(--muted); font-weight: 700; letter-spacing: 0.05em;
+      font-size: 0.68rem;
+      color: #9a8d81;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
     }
     .name {
-      font-size: 0.9rem; font-weight: 750; line-height: 1.28;
-      text-transform: capitalize; min-height: 2.45em;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: 1.02rem;
+      font-weight: 500;
+      line-height: 1.25;
+      text-transform: capitalize;
+      min-height: 2.5em;
+      letter-spacing: 0.01em;
     }
     .price {
-      margin-top: auto; padding-top: 0.45rem;
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: 1.55rem; font-weight: 400; color: #6b2f8f;
+      margin-top: auto;
+      padding-top: 0.45rem;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--champagne-deep);
     }
     .buy {
-      margin-top: 0.65rem;
+      margin-top: 0.7rem;
       width: 100%;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #1a1020, #4a2170);
-      color: #fff;
-      padding: 0.8rem;
-      font-size: 0.84rem;
-      font-weight: 800;
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
-      transition: transform .2s ease, filter .2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.78rem 0.8rem;
+      border-radius: 12px;
+      background: var(--espresso);
+      color: #f7f1e8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
-    .buy:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .buy:hover { background: #2c231c; transform: translateY(-1px); }
 
-    .empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 3rem 1rem; }
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3.5rem 1rem;
+      color: var(--soft);
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-style: italic;
+      font-size: 1.25rem;
+    }
 
     .footer {
-      max-width: 1160px; margin: 0 auto;
-      padding: 1.3rem 1.15rem 5.8rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem 5.8rem;
       text-align: center;
-      color: rgba(255,255,255,0.55);
-      font-size: 0.82rem;
-      font-weight: 500;
+      color: var(--soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+    .footer strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
     }
 
     .fab {
-      position: fixed; right: 1rem; bottom: 1rem; z-index: 50;
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      background: linear-gradient(135deg, #2dff7a, #19c75a);
-      color: #053018;
-      font-weight: 800;
-      padding: 0.95rem 1.2rem;
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 60;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.15rem;
       border-radius: 999px;
-      box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
+      background: var(--wa-bright);
+      color: #053018;
+      font-weight: 700;
+      font-size: 0.86rem;
+      box-shadow: 0 14px 36px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s ease, filter 0.2s ease;
     }
-    .fab:hover { filter: brightness(1.05); }
+    .fab:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+    @keyframes fadeRise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes shimmerLine {
+      0%, 100% { opacity: 0.45; transform: scaleX(0.85); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18); }
+      50% { box-shadow: 0 0 0 7px rgba(37, 211, 102, 0.08); }
+    }
   </style>
 </head>
 <body>
-  <div class="orb a"></div>
-  <div class="orb b"></div>
-  <div class="orb c"></div>
+  <div class="atmosphere" aria-hidden="true"></div>
 
-  <div class="wrap">
+  <div class="page">
     <header class="nav">
       <div class="nav-inner">
-        <div class="brand">JOYAS JULIANA<span>hechas para brillar</span></div>
-        <a class="wa-chip" id="waTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <div class="mark">Juliana<em>joyas</em></div>
+        <a class="nav-wa" id="waTop" href="#" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 17.2L1 23l5.9-1.1A11 11 0 0 0 20.5 3.5zm-8.6 17a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-3.5.7.7-3.4-.2-.3a9.1 9.1 0 1 1 7.9 4.5zm5-6.8c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.5-.6c.1-.2.1-.3 0-.5l-.9-2.1c-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3 .2.3 2.1 3.3a12 12 0 0 0 3.4 2.4c1.2.4 1.7.4 2.3.3.7-.1 1.6-.7 1.8-1.3s.2-1.2.1-1.3-.2-.2-.5-.3z"/></svg>
+          WhatsApp
+        </a>
       </div>
     </header>
 
     <section class="hero">
-      <div class="tag">Nueva colección</div>
-      <h1>Joyas que <i>enamoran</i></h1>
-      <p>Mira el catálogo, elige tu favorita y escríbeme por WhatsApp. Te confirmo disponibilidad y te ayudo con tu pedido.</p>
-      <div class="stats">
-        <span class="stat">Pedidos por WhatsApp</span>
-        <span class="stat">+57 314 356 2274</span>
-        <span class="stat">Piezas listas</span>
-      </div>
+      <div class="hero-brand">Juliana</div>
+      <div class="hero-rule" aria-hidden="true"></div>
+      <h1>Piezas con luz propia</h1>
+      <p>Elige tu favorita y escríbeme. Te confirmo disponibilidad y te ayudo con tu pedido.</p>
+      <a class="hero-cta" id="waHero" href="#" target="_blank" rel="noopener">
+        <span aria-hidden="true"></span>
+        Pedir por WhatsApp
+      </a>
     </section>
 
-    <div class="stage">
-      <section class="panel">
-        <div class="toolbar">
-          <input class="search" id="search" type="search" placeholder="Buscar por nombre o código…" autocomplete="off" />
-          <div class="filters" id="filters"></div>
-          <div class="meta" id="meta"></div>
-        </div>
-        <main class="grid" id="grid"></main>
-      </section>
-    </div>
+    <section class="catalog">
+      <div class="toolbar">
+        <input class="search" id="search" type="search" placeholder="Buscar por nombre o código…" autocomplete="off" />
+        <div class="filters" id="filters"></div>
+        <div class="meta" id="meta"></div>
+      </div>
+      <main class="grid" id="grid"></main>
+    </section>
 
-    <footer class="footer">Joyas Juliana · WhatsApp +57 314 356 2274</footer>
+    <footer class="footer">
+      <strong>Juliana</strong>
+      WhatsApp +57 314 356 2274
+    </footer>
   </div>
 
-  <a class="fab" id="waFab" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  <a class="fab" id="waFab" href="#" target="_blank" rel="noopener">WhatsApp</a>
 
   <script src="./productos.js"></script>
   <script>
     const { whatsapp, productos } = window.CATALOGO;
-    const money = (n) => new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(n);
+    const money = (n) =>
+      new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(n);
     const titleCase = (s) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
 
     const categoryOf = (name) => {
@@ -367,7 +469,7 @@
       if (u.includes("SEMANARIO")) return "Semanarios";
       if (u.includes("TOBILLERA")) return "Tobilleras";
       if (u.includes("PULSERA") || u.includes("BRAZALETE")) return "Pulseras";
-      if (u.includes("COLLAR") || u.includes("CAMANDULA") || u.includes("JUEGO")) return "Collares y juegos";
+      if (u.includes("COLLAR") || u.includes("CAMANDULA") || u.includes("JUEGO")) return "Collares";
       if (u.includes("CANDONGA") || u.includes("EAR CUFF") || u.includes("ARETE") || u.includes("TOPO") || u.includes("DUO") || u.includes("TRIO")) return "Aretes";
       return "Otros";
     };
@@ -378,8 +480,10 @@
     let query = "";
 
     const waBase = `https://wa.me/${whatsapp}`;
-    const greeting = "Hola Juliana! Vi tu catálogo Joyas Juliana y quiero hacer un pedido.";
-    document.getElementById("waTop").href = document.getElementById("waFab").href = `${waBase}?text=${encodeURIComponent(greeting)}`;
+    const greeting = "Hola Juliana! Vi tu catálogo y quiero hacer un pedido.";
+    ["waTop", "waHero", "waFab"].forEach((id) => {
+      document.getElementById(id).href = `${waBase}?text=${encodeURIComponent(greeting)}`;
+    });
 
     const buyLink = (p) => {
       const msg =
@@ -416,23 +520,23 @@
         const okQ = !query || p.name.toLowerCase().includes(query) || p.code.toLowerCase().includes(query);
         return okCat && okQ;
       });
-      document.getElementById("meta").textContent = `${list.length} pieza${list.length === 1 ? "" : "s"}`;
+      document.getElementById("meta").textContent = `${list.length} piezas`;
       const grid = document.getElementById("grid");
       if (!list.length) {
-        grid.innerHTML = `<div class="empty">No encontré piezas con esa búsqueda.</div>`;
+        grid.innerHTML = `<div class="empty">No encontré esa pieza</div>`;
         return;
       }
       grid.innerHTML = list.map((p, i) => `
-        <article class="card" style="animation-delay:${Math.min(i, 14) * 28}ms">
-          <div class="img-wrap">
+        <article class="card" style="animation-delay:${Math.min(i, 16) * 35}ms">
+          <div class="media">
             ${p.gift ? `<span class="badge">Campaña</span>` : ""}
             <img src="${p.image}" alt="${titleCase(p.name)}" loading="lazy" />
           </div>
           <div class="info">
-            <div class="code">Código ${p.code}</div>
+            <div class="code">${p.code}</div>
             <h2 class="name">${titleCase(p.name)}</h2>
             <div class="price">${money(p.price)}</div>
-            <a class="buy" href="${buyLink(p)}" target="_blank" rel="noopener">Comprar por WhatsApp</a>
+            <a class="buy" href="${buyLink(p)}" target="_blank" rel="noopener">Comprar</a>
           </div>
         </article>`).join("");
     }
