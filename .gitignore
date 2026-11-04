@@ -1,0 +1,5 @@
+imagenes/*_raw.png
+imagenes/sample.png
+__pycache__/
+*.pyc
+limpiar_*.py
