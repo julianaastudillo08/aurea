@@ -1,0 +1,11 @@
+JOYAS JULIANA — CATÁLOGO
+========================
+
+Precios = costo Joyas Casuales + ~20% ganancia + $10.000 de envío
+WhatsApp: +57 314 356 2274
+
+Archivos:
+- index.html
+- productos.js
+
+Para cambiar precios o el número de WhatsApp: edita productos.js

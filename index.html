@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joyas Juliana</title>
+  <meta name="description" content="Catálogo de joyas con envío incluido. Pedidos por WhatsApp." />
+  <meta property="og:title" content="Joyas Juliana" />
+  <meta property="og:description" content="Piezas seleccionadas. Envío incluido. Pedidos por WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg0: #071612;
+      --bg1: #0e2420;
+      --panel: rgba(255, 250, 244, 0.96);
+      --ink: #12201c;
+      --muted: #5d6f68;
+      --line: rgba(18, 32, 28, 0.08);
+      --gold: #c9a35b;
+      --gold-soft: #e8d3a2;
+      --mint: #9fd6c0;
+      --wa: #25d366;
+      --wa-dark: #1da851;
+      --shadow: 0 18px 50px rgba(3, 12, 10, 0.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 520px at 85% -10%, rgba(201, 163, 91, 0.28), transparent 55%),
+        radial-gradient(700px 480px at -10% 20%, rgba(159, 214, 192, 0.18), transparent 50%),
+        linear-gradient(165deg, var(--bg0), var(--bg1) 45%, #14332c);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .noise {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .shell { position: relative; z-index: 1; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 22, 18, 0.72);
+      border-bottom: 1px solid rgba(232, 211, 162, 0.12);
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      color: #f7f1e6;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 650;
+      letter-spacing: 0.01em;
+    }
+    .logo small {
+      display: block;
+      margin-top: 0.15rem;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      opacity: 0.85;
+    }
+    .wa-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--wa);
+      color: #053018;
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 0.62rem 0.95rem;
+      border-radius: 999px;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .wa-nav:hover { background: #6ef0a3; transform: translateY(-1px); }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 2.4rem 1.1rem 1.6rem;
+      display: grid;
+      gap: 1.1rem;
+      color: #f7f1e6;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: fit-content;
+      border: 1px solid rgba(232, 211, 162, 0.28);
+      background: rgba(255,255,255,0.04);
+      color: var(--gold-soft);
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2.4rem, 7vw, 4.4rem);
+      font-weight: 650;
+      line-height: 0.98;
+      max-width: 11ch;
+      text-wrap: balance;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-soft);
+      font-weight: 500;
+    }
+    .hero p {
+      max-width: 34rem;
+      color: rgba(247, 241, 230, 0.78);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      background: rgba(159, 214, 192, 0.14);
+      color: var(--mint);
+      border: 1px solid rgba(159, 214, 192, 0.25);
+    }
+    .pill.gold {
+      background: rgba(201, 163, 91, 0.16);
+      border-color: rgba(201, 163, 91, 0.35);
+      color: var(--gold-soft);
+    }
+
+    .panel {
+      max-width: 1180px;
+      margin: 0.4rem auto 0;
+      padding: 1.15rem;
+      background: var(--panel);
+      border-radius: 28px 28px 0 0;
+      box-shadow: var(--shadow);
+      min-height: 70vh;
+    }
+
+    .toolbar {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 1.15rem;
+    }
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.95rem 1.05rem;
+      outline: none;
+      font-size: 0.98rem;
+      box-shadow: 0 8px 24px rgba(18, 32, 28, 0.05);
+    }
+    .search:focus { border-color: rgba(201, 163, 91, 0.7); box-shadow: 0 0 0 4px rgba(201, 163, 91, 0.15); }
+    .filters { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 0.48rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .15s ease;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+    @media (min-width: 720px) {
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.05rem; }
+      .panel { padding: 1.4rem; border-radius: 34px 34px 0 0; }
+    }
+    @media (min-width: 1040px) {
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid rgba(18, 32, 28, 0.06);
+      border-radius: 22px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 28px rgba(18, 32, 28, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease;
+      animation: rise .5s ease both;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(18, 32, 28, 0.12);
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .img-wrap {
+      position: relative;
+      aspect-ratio: 1;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(232, 211, 162, 0.35), transparent 45%),
+        linear-gradient(160deg, #f4efe6, #e8ddd0);
+      overflow: hidden;
+    }
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .45s ease;
+    }
+    .card:hover img { transform: scale(1.05); }
+    .badge {
+      position: absolute;
+      top: 0.7rem;
+      left: 0.7rem;
+      background: rgba(7, 22, 18, 0.88);
+      color: var(--gold-soft);
+      border-radius: 999px;
+      padding: 0.3rem 0.55rem;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .ship {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: rgba(255,255,255,0.92);
+      color: #1a6b4a;
+      border-radius: 999px;
+      padding: 0.28rem 0.5rem;
+      font-size: 0.66rem;
+      font-weight: 700;
+    }
+
+    .info {
+      padding: 0.9rem 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+      flex: 1;
+    }
+    .code {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+    .name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.3;
+      text-transform: capitalize;
+      min-height: 2.5em;
+    }
+    .price-row {
+      margin-top: auto;
+      padding-top: 0.4rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+    .price {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #8d6a2d;
+    }
+    .note {
+      font-size: 0.68rem;
+      color: #1a6b4a;
+      font-weight: 700;
+      text-align: right;
+    }
+    .buy {
+      margin-top: 0.65rem;
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #12201c, #1d3730);
+      color: #fff;
+      padding: 0.78rem 0.8rem;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .buy:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--muted);
+      padding: 3rem 1rem;
+    }
+
+    .footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.2rem 1.1rem 5.8rem;
+      color: rgba(247, 241, 230, 0.65);
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    .fab {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 40;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--wa);
+      color: #053018;
+      font-weight: 800;
+      padding: 0.9rem 1.15rem;
+      border-radius: 999px;
+      box-shadow: 0 16px 36px rgba(37, 211, 102, 0.35);
+    }
+    .fab:hover { background: #6ef0a3; }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          Joyas Juliana
+          <small>Catálogo · WhatsApp</small>
+        </div>
+        <a class="wa-nav" id="waTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Colección lista para pedir</div>
+      <h1>Brillo <em>para cada día</em></h1>
+      <p>
+        Elige tu pieza y te escribo por WhatsApp. El precio ya contempla
+        envío a domicilio, para que no te lleves sorpresas.
+      </p>
+      <div class="pills">
+        <span class="pill gold">Envío incluido</span>
+        <span class="pill">Pago contra entrega / transferencia</span>
+        <span class="pill">+57 314 356 2274</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <input class="search" id="search" type="search" placeholder="Buscar por nombre o código…" autocomplete="off" />
+        <div class="filters" id="filters"></div>
+        <div class="meta" id="meta"></div>
+      </div>
+      <main class="grid" id="grid"></main>
+    </section>
+
+    <footer class="footer">
+      Joyas Juliana · Pedidos WhatsApp +57 314 356 2274 · Envío incluido en el precio
+    </footer>
+  </div>
+
+  <a class="fab" id="waFab" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+
+  <script src="./productos.js"></script>
+  <script>
+    const { whatsapp, productos } = window.CATALOGO;
+    const money = (n) =>
+      new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format(n);
+    const titleCase = (s) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const categoryOf = (name) => {
+      const u = name.toUpperCase();
+      if (u.includes("SEMANARIO")) return "Semanarios";
+      if (u.includes("TOBILLERA")) return "Tobilleras";
+      if (u.includes("PULSERA") || u.includes("BRAZALETE")) return "Pulseras";
+      if (u.includes("COLLAR") || u.includes("CAMANDULA") || u.includes("JUEGO")) return "Collares y juegos";
+      if (u.includes("CANDONGA") || u.includes("EAR CUFF") || u.includes("ARETE") || u.includes("TOPO") || u.includes("DUO") || u.includes("TRIO")) return "Aretes";
+      return "Otros";
+    };
+    productos.forEach((p) => { p.category = categoryOf(p.name); });
+
+    const cats = ["Todos", ...new Set(productos.map((p) => p.category))];
+    let activeCat = "Todos";
+    let query = "";
+
+    const waBase = `https://wa.me/${whatsapp}`;
+    const greeting = "Hola Juliana! Vi tu catálogo Joyas Juliana y quiero hacer un pedido.";
+    document.getElementById("waTop").href =
+      document.getElementById("waFab").href =
+      `${waBase}?text=${encodeURIComponent(greeting)}`;
+
+    const buyLink = (p) => {
+      const msg =
+        `Hola Juliana! Quiero comprar:\n` +
+        `• ${titleCase(p.name)}\n` +
+        `• Código: ${p.code}\n` +
+        `• Precio (envío incluido): ${money(p.price)}\n\n` +
+        `¿Me confirmas disponibilidad?`;
+      return `${waBase}?text=${encodeURIComponent(msg)}`;
+    };
+
+    const filtersEl = document.getElementById("filters");
+    cats.forEach((cat) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "filter-btn" + (cat === activeCat ? " active" : "");
+      btn.textContent = cat;
+      btn.addEventListener("click", () => {
+        activeCat = cat;
+        [...filtersEl.children].forEach((b) => b.classList.toggle("active", b.textContent === cat));
+        render();
+      });
+      filtersEl.appendChild(btn);
+    });
+
+    document.getElementById("search").addEventListener("input", (e) => {
+      query = e.target.value.trim().toLowerCase();
+      render();
+    });
+
+    function render() {
+      const list = productos.filter((p) => {
+        const okCat = activeCat === "Todos" || p.category === activeCat;
+        const okQ = !query || p.name.toLowerCase().includes(query) || p.code.toLowerCase().includes(query);
+        return okCat && okQ;
+      });
+      document.getElementById("meta").textContent = `${list.length} pieza${list.length === 1 ? "" : "s"} · envío incluido`;
+      const grid = document.getElementById("grid");
+      if (!list.length) {
+        grid.innerHTML = `<div class="empty">No encontré piezas con esa búsqueda.</div>`;
+        return;
+      }
+      grid.innerHTML = list.map((p, i) => `
+        <article class="card" style="animation-delay:${Math.min(i, 14) * 28}ms">
+          <div class="img-wrap">
+            ${p.gift ? `<span class="badge">Campaña</span>` : ""}
+            <span class="ship">Envío ✓</span>
+            <img src="${p.image}" alt="${titleCase(p.name)}" loading="lazy" />
+          </div>
+          <div class="info">
+            <div class="code">Código ${p.code}</div>
+            <h2 class="name">${titleCase(p.name)}</h2>
+            <div class="price-row">
+              <div class="price">${money(p.price)}</div>
+              <div class="note">con envío</div>
+            </div>
+            <a class="buy" href="${buyLink(p)}" target="_blank" rel="noopener">Comprar por WhatsApp</a>
+          </div>
+        </article>`).join("");
+    }
+    render();
+  </script>
+</body>
+</html>
