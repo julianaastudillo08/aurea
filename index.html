@@ -514,7 +514,7 @@
       productos.find((p) => /topo|arete|duo/i.test(p.name) && !/semanario/i.test(p.name)) ||
       productos[0];
     if (heroPick) {
-      document.getElementById("heroBg").style.backgroundImage = `url("${heroPick.image}?v=4")`;
+      document.getElementById("heroBg").style.backgroundImage = `url("${heroPick.image}?v=5")`;
     }
 
     const buyLink = (p) => {
@@ -562,7 +562,7 @@
         <article class="card" style="animation-delay:${Math.min(i, 16) * 35}ms">
           <div class="media">
             ${p.gift ? `<span class="badge">Campaña</span>` : ""}
-            <img src="${p.image}?v=4" alt="${titleCase(p.name)}" loading="lazy" />
+            <img src="${p.image}?v=5" alt="${titleCase(p.name)}" loading="lazy" />
           </div>
           <div class="info">
             <div class="code">${p.code}</div>
