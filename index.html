@@ -263,14 +263,6 @@
       border-color: var(--espresso);
       color: #f6f0e8;
     }
-    .meta {
-      margin-top: 0.75rem;
-      font-size: 0.78rem;
-      color: var(--soft);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -468,7 +460,6 @@
       <div class="toolbar">
         <input class="search" id="search" type="search" placeholder="Buscar por nombre o código…" autocomplete="off" />
         <div class="filters" id="filters"></div>
-        <div class="meta" id="meta"></div>
       </div>
       <main class="grid" id="grid"></main>
     </section>
@@ -552,7 +543,6 @@
         const okQ = !query || p.name.toLowerCase().includes(query) || p.code.toLowerCase().includes(query);
         return okCat && okQ;
       });
-      document.getElementById("meta").textContent = `${list.length} piezas`;
       const grid = document.getElementById("grid");
       if (!list.length) {
         grid.innerHTML = `<div class="empty">No encontré esa pieza</div>`;
