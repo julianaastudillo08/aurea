@@ -1,7 +1,7 @@
 // Precios = costo + ~20% ganancia + 4000 (interno; no mostrar envio en la web)
 // WhatsApp: +57 314 356 2274
 window.CATALOGO = {
-  marca: "Joyas Juliana",
+  marca: "Aurea",
   whatsapp: "573143562274",
   productos: [
     { code: "31012278", name: "DUO RODIO MARIPOSA OJO GATO CIR", cost: 35000, price: 46000, image: "./imagenes/31012278.jpg", gift: true },

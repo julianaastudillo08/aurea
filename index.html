@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Juliana — Joyas</title>
-  <meta name="description" content="Catálogo de joyas Juliana. Pedidos por WhatsApp." />
-  <meta property="og:title" content="Juliana — Joyas" />
+  <title>Aurea — Joyas</title>
+  <meta name="description" content="Catálogo de joyas Aurea. Pedidos por WhatsApp." />
+  <meta property="og:title" content="Aurea — Joyas" />
   <meta property="og:description" content="Piezas seleccionadas. Pedidos por WhatsApp." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -442,7 +442,7 @@
   <div class="page">
     <header class="nav">
       <div class="nav-inner">
-        <div class="mark">Juliana<em>joyas</em></div>
+        <div class="mark">Aurea<em>joyas</em></div>
         <a class="nav-wa" id="waTop" href="#" target="_blank" rel="noopener">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 17.2L1 23l5.9-1.1A11 11 0 0 0 20.5 3.5zm-8.6 17a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-3.5.7.7-3.4-.2-.3a9.1 9.1 0 1 1 7.9 4.5zm5-6.8c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.5-.6c.1-.2.1-.3 0-.5l-.9-2.1c-.2-.6-.5-.5-.6-.5h-.5c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3 .2.3 2.1 3.3a12 12 0 0 0 3.4 2.4c1.2.4 1.7.4 2.3.3.7-.1 1.6-.7 1.8-1.3s.2-1.2.1-1.3-.2-.2-.5-.3z"/></svg>
           WhatsApp
@@ -453,7 +453,7 @@
     <section class="hero-shell">
       <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
       <div class="hero">
-        <div class="hero-brand">Juliana</div>
+        <div class="hero-brand">Aurea</div>
         <div class="hero-rule" aria-hidden="true"></div>
         <h1>Piezas con luz propia</h1>
         <p>Elige tu favorita y escríbeme. Te confirmo disponibilidad y te ayudo con tu pedido.</p>
@@ -474,7 +474,7 @@
     </section>
 
     <footer class="footer">
-      <strong>Juliana</strong>
+      <strong>Aurea</strong>
       WhatsApp +57 314 356 2274
     </footer>
   </div>
@@ -503,7 +503,7 @@
     let query = "";
 
     const waBase = `https://wa.me/${whatsapp}`;
-    const greeting = "Hola Juliana! Vi tu catálogo y quiero hacer un pedido.";
+    const greeting = "Hola! Vi el catálogo de Aurea y quiero hacer un pedido.";
     ["waTop", "waHero"].forEach((id) => {
       document.getElementById(id).href = `${waBase}?text=${encodeURIComponent(greeting)}`;
     });
@@ -519,7 +519,7 @@
 
     const buyLink = (p) => {
       const msg =
-        `Hola Juliana! Quiero comprar:\n` +
+        `Hola! Vi Aurea y quiero comprar:\n` +
         `• ${titleCase(p.name)}\n` +
         `• Código: ${p.code}\n` +
         `• Precio: ${money(p.price)}\n\n` +
