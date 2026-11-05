@@ -3,3 +3,6 @@ imagenes/sample.png
 __pycache__/
 *.pyc
 limpiar_*.py
+.firebase/
+firebase-debug.log
+.firebaserc.local
