@@ -1,9 +1,12 @@
 AUREA — JOYAS
 
-Enlace público para compartir (cualquiera lo puede abrir):
+Enlace principal (Firebase — comparte este):
+https://aurea-catalogo.web.app/
+
+Respaldo (GitHub Pages):
 https://julianaastudillo08.github.io/aurea/
 
 WhatsApp: +57 314 356 2274
 
-Catálogo estático. Pedidos por WhatsApp.
-No hace falta login ni instalación.
+Para volver a publicar en Firebase:
+  deploy-firebase.cmd

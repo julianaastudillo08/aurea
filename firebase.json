@@ -1,0 +1,40 @@
+{
+  "hosting": {
+    "site": "aurea-catalogo",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "**/*_raw.png",
+      "**/*.py",
+      "dns-patch.js",
+      "**/firebase-debug.log",
+      "LEEME.txt",
+      "imagenes/_qa_*",
+      "imagenes/_dbg_*",
+      "imagenes/_ink_*",
+      "imagenes/_rawtop_*"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|webp)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=604800"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(html|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=300"
+          }
+        ]
+      }
+    ]
+  }
+}
