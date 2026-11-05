@@ -508,9 +508,13 @@
       document.getElementById(id).href = `${waBase}?text=${encodeURIComponent(greeting)}`;
     });
 
-    const heroPick = productos[1] || productos[0];
+    // Foto limpia (sin tarjeta/logo) para el hero
+    const heroPick =
+      productos.find((p) => p.code === "31012278") ||
+      productos.find((p) => /topo|arete|duo/i.test(p.name) && !/semanario/i.test(p.name)) ||
+      productos[0];
     if (heroPick) {
-      document.getElementById("heroBg").style.backgroundImage = `url("${heroPick.image}")`;
+      document.getElementById("heroBg").style.backgroundImage = `url("${heroPick.image}?v=3")`;
     }
 
     const buyLink = (p) => {
@@ -558,7 +562,7 @@
         <article class="card" style="animation-delay:${Math.min(i, 16) * 35}ms">
           <div class="media">
             ${p.gift ? `<span class="badge">Campaña</span>` : ""}
-            <img src="${p.image}" alt="${titleCase(p.name)}" loading="lazy" />
+            <img src="${p.image}?v=3" alt="${titleCase(p.name)}" loading="lazy" />
           </div>
           <div class="info">
             <div class="code">${p.code}</div>
